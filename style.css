@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+*{
+    box-sizing: border-box;
+    scroll-behavior:smooth;
+    scrollbar-width: thin; /* Works on Firefox */
+    scrollbar-color: #7e9cff;
+    font-size: calc(1px + 1.2vw);
+    font-family: 'Inter',sans-serif;
+    font-weight: 400;
+}
+  
+  /* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+    width: 12px;
+}
+  
+*::-webkit-scrollbar-track {
+    background: #4462C6;
+    width: 12px;
+}
+  
+*::-webkit-scrollbar-thumb {
+    border: 2.5px solid transparent;
+    border-radius: 100px;
+    background-color: white;
+    background-clip: content-box;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+}
+
+nav{
+    position:fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background-color: #4462C6;
+    z-index: 5;
+    transition: all .3s ease-out 0s;
+}
+
+nav ul{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    gap: 3vw;
+}
+
+nav ul li{
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+nav ul li a{
+    text-decoration: none;
+    color: white;
+    font-size: calc(10px + 0.5vw);
+    font-weight: 600;
+    transition: color 0.3s linear;
+}
+
+.heroArea{
+    background-color: #4462C6;
+    height: 95vh;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.heroArea h1{
+    color: white;
+    font-weight: 800;
+    font-size: 5rem;
+    width: 30rem;
+    letter-spacing: 2px;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.heroArea svg{
+    width: 30rem;
+    height: 20rem;
+    margin: auto 0;
+}
+
+#butter{
+    height: 300vh;
+}
+
+.backToTop{
+    position: fixed;
+    right: 1.6rem;
+    bottom: 1.2rem;
+    z-index: 10;
+    transition: 5s;
+    opacity: 0;
+    visibility: hidden;
+    transition:visibility 0.3s linear,opacity 0.3s linear;
+}
+
+.backToTop svg{
+    width: 45px;
+    height: 45px;
+    transition: 0.2s linear;
+}
+
+@media screen and (min-width:800px){
+    .backToTop svg:hover{
+        transform: scale(1.2);
+    }
+}
+
+@media screen and (max-width:800px) {
+    *{
+        font-size: calc((9px + 0.3vw) * 5);
+    }
+    .heroArea{
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-end;
+        flex-wrap: nowrap;
+    }
+    .heroArea h1{
+        width: 85%;
+        height: 25%;
+        text-align: center;
+        justify-content: center;
+        font-size: 1rem; /*1px plus 2% de la view width * 5 comme les 5rems plus hauts */
+    }
+    .heroArea svg{
+        margin: 30px 0;
+        width: 7.5rem;
+        height: 5rem;
+    }
+}
+
