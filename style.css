@@ -147,5 +147,9 @@ nav ul li a{
         width: 7.5rem;
         height: 5rem;
     }
+    .backToTop{
+        right: 2vw;
+        bottom: 1.2vw;
+    }
 }
 
