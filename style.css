@@ -152,8 +152,8 @@ nav ul li a{
         height: 5rem;
     }
     .backToTop{
-        right: 2vw;
-        bottom: 1.2vw;
+        right: 10px;
+        bottom: 5px;
     }
 }
 
