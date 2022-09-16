@@ -7,24 +7,29 @@ window.addEventListener('scroll',()=>{
     var totalheight = document.documentElement.scrollHeight;
     var clientHeight = document.documentElement.clientHeight;
     var scrollPercentage = Math.round(scroll * 100 / (totalheight - clientHeight))
+    var clientWidth = document.documentElement.clientWidth;
 
-    styleNavBar(scrollPercentage);
+    styleNavBar(scrollPercentage,clientWidth);
     styleGoBackToTop(scrollPercentage);
 });
 
-function styleNavBar(scrollValue){
+function styleNavBar(scrollValue,clientWidth){
     if(scrollValue==0){
         NAVBAR.style.backgroundColor="#4462C6";
         NAVBAR.style.boxShadow="none";
-        for (i = 0; i < NAVBARLINK.length; ++i) {
-            NAVBARLINK[i].style.color = "white";
-        };
+        if(clientWidth>=800){
+            for (i = 0; i < NAVBARLINK.length; ++i) {
+                NAVBARLINK[i].style.color = "white";
+            };
+        }
     }else{
         NAVBAR.style.backgroundColor="#FFF";
         NAVBAR.style.boxShadow="0 20px 50px 0 rgb(0 0 0 / 5%)";
-        for (i = 0; i < NAVBARLINK.length; ++i) {
-            NAVBARLINK[i].style.color = "#4462C6";
-        };
+        if(clientWidth>=800){
+            for (i = 0; i < NAVBARLINK.length; ++i) {
+                NAVBARLINK[i].style.color = "#4462C6";
+            };
+        }
     }
 }
 
