@@ -1,6 +1,7 @@
 const NAVBAR = document.querySelector("nav")
 const NAVBARLINK = document.querySelectorAll(".navBarLink")
 const GOBACKTOTOP = document.querySelector(".backToTop")
+const BREAKPOINT = 900;
 
 window.addEventListener('scroll',()=>{
     var scroll = document.documentElement.scrollTop
@@ -17,7 +18,7 @@ function styleNavBar(scrollValue,clientWidth){
     if(scrollValue==0){
         NAVBAR.style.backgroundColor="#4462C6";
         NAVBAR.style.boxShadow="none";
-        if(clientWidth>=800){
+        if(clientWidth>=BREAKPOINT){
             for (i = 0; i < NAVBARLINK.length; ++i) {
                 NAVBARLINK[i].style.color = "white";
             };
@@ -25,7 +26,7 @@ function styleNavBar(scrollValue,clientWidth){
     }else{
         NAVBAR.style.backgroundColor="#FFF";
         NAVBAR.style.boxShadow="0 20px 50px 0 rgb(0 0 0 / 5%)";
-        if(clientWidth>=800){
+        if(clientWidth>=BREAKPOINT){
             for (i = 0; i < NAVBARLINK.length; ++i) {
                 NAVBARLINK[i].style.color = "#4462C6";
             };
