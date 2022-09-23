@@ -2,7 +2,7 @@
 
 *{
     box-sizing: border-box;
-    scroll-behavior:smooth;
+    /* scroll-behavior:smooth; */
     scrollbar-width: thin; /* Works on Firefox */
     scrollbar-color: #7e9cff;
     font-size: calc(1px + 1.2vw);
@@ -62,12 +62,13 @@ nav ul li{
     align-items: center;
 }
 
-nav ul li a{
+nav ul li p{
     text-decoration: none;
     color: white;
     font-size: calc(10px + 0.5vw);
     font-weight: 600;
     transition: color 0.3s linear;
+    cursor: pointer;
 }
 
 .heroArea{
@@ -127,10 +128,7 @@ nav ul li a{
     bottom: 0;
     left: 0;
     transition: 200ms;
-}
-
-#mainArticle{
-    width: 100%;
+    z-index: 10;
 }
 
 .resume{
@@ -150,6 +148,12 @@ nav ul li a{
     font-size: 1.5rem;
     font-weight: 600;
     margin: 0 0 30px 0;
+}
+
+.missions{
+    height: 20vh;
+    width: 100%;
+    background-color:#4462C6;
 }
 
 @media screen and (min-width:900px){
@@ -207,6 +211,22 @@ nav ul li a{
     }
     nav ul li .navBarLink{
         color: #4462C6;
+    }
+
+    .resume{
+        margin: 100px 10px;
+    }
+
+    .resume h1{
+        font-size: 0.7rem;
+    }
+
+    .resume h2{
+        font-size: 0.3rem;
+    }
+
+    .resume p{
+        font-size: 0.3rem;
     }
 }
 

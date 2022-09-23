@@ -2,12 +2,15 @@ const NAVBAR = document.querySelector("nav")
 const NAVBARLINK = document.querySelectorAll(".navBarLink")
 const GOBACKTOTOP = document.querySelector(".backToTop")
 const PROGRESSBAR = document.querySelector(".progressBar")
+const NAVLINKS = [...document.querySelectorAll('nav p')]
+const ARTICLES = [...document.querySelectorAll('article')]
 const BREAKPOINT = 900;
+const NAVHEIGHT = document.querySelector('nav').offsetHeight;
 
 window.addEventListener('scroll',()=>{
     var scroll = document.documentElement.scrollTop
-    var totalheight = document.documentElement.scrollHeight;
-    var clientHeight = document.documentElement.clientHeight;
+    var totalheight = document.documentElement.scrollHeight; //hauteur total du document
+    var clientHeight = document.documentElement.clientHeight;// hauteur total de la 'fenetre' du client
     var scrollPercentage = Math.round(scroll * 100 / (totalheight - clientHeight))
     var clientWidth = document.documentElement.clientWidth;
 
@@ -49,3 +52,14 @@ function styleGoBackToTop(scrollValue){
 function styleProgressBar(scrollValue){
     PROGRESSBAR.style.width=scrollValue+'%';
 }
+
+NAVLINKS.forEach(link => link.addEventListener("click",(e)=>{
+    const linkIndex = NAVLINKS.indexOf(e.target)
+    const positionCalculationArticle = ARTICLES[linkIndex].offsetTop;
+    const actualTargetMarginTop = window.getComputedStyle(ARTICLES[linkIndex]).marginTop.slice(0,-2);
+    const toBeInCenter = (window.document.documentElement.clientHeight * 10)/100
+    window.scrollTo({
+        top:positionCalculationArticle - NAVHEIGHT - actualTargetMarginTop - toBeInCenter,//position par rapport au top de la page - la hauteur de la barre de nav - le maginTop de l'article selectionne - permet de deplacer le tout de 10% vers le haut pour l'avoir au niveau des yeux
+        behavior:"smooth"
+    })
+}))

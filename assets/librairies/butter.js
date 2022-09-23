@@ -7,7 +7,7 @@
 
         this.defaults = {
             wrapperId: 'butter',
-            wrapperDamper: 0.1,
+            wrapperDamper: 0.04,
             cancelOnTouch: false
         }
         
