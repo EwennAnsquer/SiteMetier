@@ -119,7 +119,7 @@ nav ul li a{
     transition: 0.2s linear;
 }
 
-@media screen and (min-width:800px){
+@media screen and (min-width:900px){
     .backToTop svg:hover{
         transform: scale(1.2);
     }
