@@ -1,6 +1,7 @@
 const NAVBAR = document.querySelector("nav")
 const NAVBARLINK = document.querySelectorAll(".navBarLink")
 const GOBACKTOTOP = document.querySelector(".backToTop")
+const PROGRESSBAR = document.querySelector(".progressBar")
 const BREAKPOINT = 900;
 
 window.addEventListener('scroll',()=>{
@@ -12,6 +13,7 @@ window.addEventListener('scroll',()=>{
 
     styleNavBar(scrollPercentage,clientWidth);
     styleGoBackToTop(scrollPercentage);
+    styleProgressBar(scrollPercentage);
 });
 
 function styleNavBar(scrollValue,clientWidth){
@@ -42,4 +44,8 @@ function styleGoBackToTop(scrollValue){
         GOBACKTOTOP.style.visibility="visible";
         GOBACKTOTOP.style.opacity="1";
     }
+}
+
+function styleProgressBar(scrollValue){
+    PROGRESSBAR.style.width=scrollValue+'%';
 }

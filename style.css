@@ -119,6 +119,16 @@ nav ul li a{
     transition: 0.2s linear;
 }
 
+.progressBar{
+    position: fixed;
+    height: 10px;
+    width: 100%;
+    background-color: #4462C6;
+    bottom: 0;
+    left: 0;
+    transition: 200ms;
+}
+
 @media screen and (min-width:900px){
     .backToTop svg:hover{
         transform: scale(1.2);
