@@ -132,8 +132,8 @@ nav ul li p{
 }
 
 .resume{
-    max-width: 900px;
-    margin: 100px auto;
+    /* max-width: 900px; */
+    margin: 100px 15%;
 }
 
 .resume h1{
