@@ -2,7 +2,7 @@
 
 *{
     box-sizing: border-box;
-    /* scroll-behavior:smooth; */
+    scroll-behavior:smooth;
     scrollbar-width: thin; /* Works on Firefox */
     scrollbar-color: #7e9cff;
     font-size: calc(1px + 1.2vw);
@@ -151,7 +151,7 @@ nav ul li p{
 }
 
 .missions{
-    height: 20vh;
+    height: 200vh;
     width: 100%;
     background-color:#4462C6;
 }

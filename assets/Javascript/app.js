@@ -6,17 +6,30 @@ const NAVLINKS = [...document.querySelectorAll('nav p')]
 const ARTICLES = [...document.querySelectorAll('article')]
 const BREAKPOINT = 900;
 const NAVHEIGHT = document.querySelector('nav').offsetHeight;
+var positionCalculationArticle;
+var scroll;
 
 window.addEventListener('scroll',()=>{
-    var scroll = document.documentElement.scrollTop
+    scroll = document.documentElement.scrollTop
     var totalheight = document.documentElement.scrollHeight; //hauteur total du document
     var clientHeight = document.documentElement.clientHeight;// hauteur total de la 'fenetre' du client
     var scrollPercentage = Math.round(scroll * 100 / (totalheight - clientHeight))
     var clientWidth = document.documentElement.clientWidth;
+    var distanceTopArticles = [...document.querySelectorAll('article')]
+
+    NAVLINKS.forEach(e => e.addEventListener('click',()=>{ // changer la couleur des nav p quand on clique dessus
+        for (i = 0; i < NAVBARLINK.length; ++i) {
+            NAVBARLINK[i].style.color = "#4462C6";
+        };
+        setTimeout(() => {
+            e.style.color = '#7e9cff';
+        }, 600);
+    }));
 
     styleNavBar(scrollPercentage,clientWidth);
     styleGoBackToTop(scrollPercentage);
     styleProgressBar(scrollPercentage);
+    styleNavP(clientHeight,distanceTopArticles,NAVLINKS)
 });
 
 function styleNavBar(scrollValue,clientWidth){
@@ -35,9 +48,10 @@ function styleNavBar(scrollValue,clientWidth){
             for (i = 0; i < NAVBARLINK.length; ++i) {
                 NAVBARLINK[i].style.color = "#4462C6";
             };
-        }
+        };
     }
 }
+
 
 function styleGoBackToTop(scrollValue){
     if(scrollValue<20){
@@ -55,11 +69,21 @@ function styleProgressBar(scrollValue){
 
 NAVLINKS.forEach(link => link.addEventListener("click",(e)=>{
     const linkIndex = NAVLINKS.indexOf(e.target)
-    const positionCalculationArticle = ARTICLES[linkIndex].offsetTop;
+    positionCalculationArticle = ARTICLES[linkIndex].offsetTop;
     const actualTargetMarginTop = window.getComputedStyle(ARTICLES[linkIndex]).marginTop.slice(0,-2);
-    const toBeInCenter = (window.document.documentElement.clientHeight * 10)/100
+    const toBeInCenter = (window.document.documentElement.clientHeight * 10)/100;
+    e.target.style.color='#7e9CFF';
     window.scrollTo({
-        top:positionCalculationArticle - NAVHEIGHT - actualTargetMarginTop - toBeInCenter,//position par rapport au top de la page - la hauteur de la barre de nav - le maginTop de l'article selectionne - permet de deplacer le tout de 10% vers le haut pour l'avoir au niveau des yeux
+        top:positionCalculationArticle - NAVHEIGHT - actualTargetMarginTop - toBeInCenter,//position par rapport au top de la page - la hauteur de la barre de nav - le maginTop de l'article selectionne - valuer qui permet de deplacer le tout de 10% vers le haut pour l'avoir au niveau des yeux
         behavior:"smooth"
     })
 }))
+
+function styleNavP(clientHeight,distanceTopArticles,NAVLINKS){
+    distanceTopArticles.forEach(e => {
+        if(e.getBoundingClientRect().top < clientHeight * 0.4 && e.getBoundingClientRect().bottom > clientHeight * 0.3){
+            var indexP=distanceTopArticles.indexOf(e);
+            NAVLINKS[indexP].style.color='#7e9CFF';
+        }
+    });
+}
