@@ -33,22 +33,25 @@ window.addEventListener('scroll',()=>{
 });
 
 function styleNavBar(scrollValue,clientWidth){
-    if(scrollValue==0){
-        NAVBAR.style.backgroundColor="#4462C6";
-        NAVBAR.style.boxShadow="none";
-        if(clientWidth>=BREAKPOINT){
-            for (i = 0; i < NAVBARLINK.length; ++i) {
-                NAVBARLINK[i].style.color = "white";
-            };
-        }
-    }else{
-        NAVBAR.style.backgroundColor="#FFF";
-        NAVBAR.style.boxShadow="0 20px 50px 0 rgb(0 0 0 / 5%)";
-        if(clientWidth>=BREAKPOINT){
+    if(clientWidth>=BREAKPOINT){
+        if(scrollValue==0){
+            NAVBAR.style.backgroundColor="#4462C6";
+            NAVBAR.style.boxShadow="none";
+            if(clientWidth>=BREAKPOINT){
+                for (i = 0; i < NAVBARLINK.length; ++i) {
+                    NAVBARLINK[i].style.color = "white";
+                };
+            }
+        }else{
+            NAVBAR.style.backgroundColor="#FFF";
+            NAVBAR.style.boxShadow="0 20px 50px 0 rgb(0 0 0 / 5%)";
             for (i = 0; i < NAVBARLINK.length; ++i) {
                 NAVBARLINK[i].style.color = "#4462C6";
             };
-        };
+        }
+    }else{
+        NAVBAR.style.backgroundColor="transparent";
+        NAVBAR.style.boxShadow="none";
     }
 }
 
