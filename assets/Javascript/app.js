@@ -8,24 +8,27 @@ const BREAKPOINT = 900;
 const NAVHEIGHT = document.querySelector('nav').offsetHeight;
 var positionCalculationArticle;
 var scroll;
+var totalheight;
+var clientHeight;
+var scrollPercentage;
+var clientWidth;
+var distanceTopArticles;
+
+function getValue(){
+    scroll = document.documentElement.scrollTop
+    totalheight = document.documentElement.scrollHeight; //hauteur total du document
+    clientHeight = document.documentElement.clientHeight;// hauteur total de la 'fenetre' du client
+    scrollPercentage = Math.round(scroll * 100 / (totalheight - clientHeight))
+    clientWidth = document.documentElement.clientWidth;
+    distanceTopArticles = [...document.querySelectorAll('article')]
+}
+
+window.addEventListener('load',()=>{
+    getValue();
+});
 
 window.addEventListener('scroll',()=>{
-    scroll = document.documentElement.scrollTop
-    var totalheight = document.documentElement.scrollHeight; //hauteur total du document
-    var clientHeight = document.documentElement.clientHeight;// hauteur total de la 'fenetre' du client
-    var scrollPercentage = Math.round(scroll * 100 / (totalheight - clientHeight))
-    var clientWidth = document.documentElement.clientWidth;
-    var distanceTopArticles = [...document.querySelectorAll('article')]
-
-    NAVLINKS.forEach(e => e.addEventListener('click',()=>{ // changer la couleur des nav p quand on clique dessus
-        for (i = 0; i < NAVBARLINK.length; ++i) {
-            NAVBARLINK[i].style.color = "#4462C6";
-        };
-        setTimeout(() => {
-            e.style.color = '#7e9cff';
-        }, 600);
-    }));
-
+    getValue();
     styleNavBar(scrollPercentage,clientWidth);
     styleGoBackToTop(scrollPercentage);
     styleProgressBar(scrollPercentage);
@@ -74,7 +77,7 @@ NAVLINKS.forEach(link => link.addEventListener("click",(e)=>{
     const linkIndex = NAVLINKS.indexOf(e.target)
     positionCalculationArticle = ARTICLES[linkIndex].offsetTop;
     const actualTargetMarginTop = window.getComputedStyle(ARTICLES[linkIndex]).marginTop.slice(0,-2);
-    const toBeInCenter = (window.document.documentElement.clientHeight * 10)/100;
+    const toBeInCenter = (window.document.documentElement.clientHeight * 5)/100;
     e.target.style.color='#7e9CFF';
     window.scrollTo({
         top:positionCalculationArticle - NAVHEIGHT - actualTargetMarginTop - toBeInCenter,//position par rapport au top de la page - la hauteur de la barre de nav - le maginTop de l'article selectionne - valuer qui permet de deplacer le tout de 10% vers le haut pour l'avoir au niveau des yeux
