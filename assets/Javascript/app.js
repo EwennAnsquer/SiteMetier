@@ -1,5 +1,4 @@
 const NAVBAR = document.querySelector("nav")
-const NAVBARLINK = document.querySelectorAll(".navBarLink")
 const GOBACKTOTOP = document.querySelector(".backToTop")
 const PROGRESSBAR = document.querySelector(".progressBar")
 const NAVLINKS = [...document.querySelectorAll('nav p')]
@@ -13,6 +12,26 @@ var clientHeight;
 var scrollPercentage;
 var clientWidth;
 var distanceTopArticles;
+
+gsap.registerPlugin(ScrollTrigger);
+
+NAVLINKS.forEach(e => {
+    var index = NAVLINKS.indexOf(e);
+    var trigger = ARTICLES[index]
+    console.log(trigger)
+    var marginTopTrigger = parseInt(window.getComputedStyle(trigger).marginTop) //ne compte pas le maregin top donc on fait moins le nombre de pixel du margin top pour mettre l'event plus haut
+    var marginBottomTrigger = parseInt(window.getComputedStyle(trigger).marginBottom.slice(0,-2)) + ARTICLES[index].offsetHeight//meme chose que le mqrgin top mais on doit ajouter la hauteur du doc
+    ScrollTrigger.create({
+        trigger:trigger,
+        start:"-"+marginTopTrigger+" 35%",
+        end: marginBottomTrigger+"px 35%",
+        onEnter: ()=> NAVLINKS[index].style.color='#7e9CFF',
+        onEnterBack: ()=> NAVLINKS[index].style.color='#7e9CFF',
+        onLeave: ()=> NAVLINKS[index].style.color='#4462C6',
+        onLeaveBack: ()=> NAVLINKS[index].style.color='#4462C6',
+        markers:true,
+    });
+})
 
 function getValue(){
     scroll = document.documentElement.scrollTop
@@ -32,7 +51,6 @@ window.addEventListener('scroll',()=>{
     styleNavBar(scrollPercentage,clientWidth);
     styleGoBackToTop(scrollPercentage);
     styleProgressBar(scrollPercentage);
-    styleNavP(clientHeight,distanceTopArticles,NAVLINKS)
 });
 
 function styleNavBar(scrollValue,clientWidth){
@@ -41,16 +59,18 @@ function styleNavBar(scrollValue,clientWidth){
             NAVBAR.style.backgroundColor="#4462C6";
             NAVBAR.style.boxShadow="none";
             if(clientWidth>=BREAKPOINT){
-                for (i = 0; i < NAVBARLINK.length; ++i) {
-                    NAVBARLINK[i].style.color = "white";
-                };
+                NAVLINKS.forEach(e =>{
+                    e.style.color="white";
+                })
             }
         }else{
             NAVBAR.style.backgroundColor="#FFF";
             NAVBAR.style.boxShadow="0 20px 50px 0 rgb(0 0 0 / 5%)";
-            for (i = 0; i < NAVBARLINK.length; ++i) {
-                NAVBARLINK[i].style.color = "#4462C6";
-            };
+            if(scrollValue==1){
+                NAVLINKS.forEach(e =>{
+                    e.style.color="#4462C6";
+                })
+            }
         }
     }else{
         NAVBAR.style.backgroundColor="transparent";
@@ -84,12 +104,3 @@ NAVLINKS.forEach(link => link.addEventListener("click",(e)=>{
         behavior:"smooth"
     })
 }))
-
-function styleNavP(clientHeight,distanceTopArticles,NAVLINKS){
-    distanceTopArticles.forEach(e => {
-        if(e.getBoundingClientRect().top < clientHeight * 0.4 && e.getBoundingClientRect().bottom > clientHeight * 0.3){
-            var indexP=distanceTopArticles.indexOf(e);
-            NAVLINKS[indexP].style.color='#7e9CFF';
-        }
-    });
-}
