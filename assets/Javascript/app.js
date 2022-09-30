@@ -13,6 +13,8 @@ var scrollPercentage;
 var clientWidth;
 var distanceTopArticles;
 
+document.querySelector(".backToTop svg").setAttribute("viewBox","0 0 100 100");
+document.querySelector(".heroArea svg").setAttribute("viewBox","30 80 330 110");
 gsap.registerPlugin(ScrollTrigger);
 
 NAVLINKS.forEach(e => {
@@ -29,7 +31,7 @@ NAVLINKS.forEach(e => {
         onEnterBack: ()=> NAVLINKS[index].style.color='#7e9CFF',
         onLeave: ()=> NAVLINKS[index].style.color='#4462C6',
         onLeaveBack: ()=> NAVLINKS[index].style.color='#4462C6',
-        markers:true,
+        markers:false,
     });
 })
 
