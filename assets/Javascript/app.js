@@ -20,7 +20,7 @@ gsap.registerPlugin(ScrollTrigger);
 NAVLINKS.forEach(e => {
     var index = NAVLINKS.indexOf(e);
     var trigger = ARTICLES[index]
-    console.log(trigger)
+    // console.log(trigger)
     var marginTopTrigger = parseInt(window.getComputedStyle(trigger).marginTop) //ne compte pas le maregin top donc on fait moins le nombre de pixel du margin top pour mettre l'event plus haut
     var marginBottomTrigger = parseInt(window.getComputedStyle(trigger).marginBottom.slice(0,-2)) + ARTICLES[index].offsetHeight//meme chose que le mqrgin top mais on doit ajouter la hauteur du doc
     ScrollTrigger.create({
