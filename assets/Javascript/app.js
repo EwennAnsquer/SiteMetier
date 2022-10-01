@@ -3,6 +3,8 @@ const GOBACKTOTOP = document.querySelector(".backToTop")
 const PROGRESSBAR = document.querySelector(".progressBar")
 const NAVLINKS = [...document.querySelectorAll('nav p')]
 const ARTICLES = [...document.querySelectorAll('article')]
+const LOADER = document.querySelector('.loaderScreen')
+const BODY = document.querySelector('body')
 const BREAKPOINT = 900;
 const NAVHEIGHT = document.querySelector('nav').offsetHeight;
 var positionCalculationArticle;
@@ -14,6 +16,14 @@ var clientWidth;
 var distanceTopArticles;
 
 gsap.registerPlugin(ScrollTrigger);
+
+window.addEventListener("load",()=>{
+    LOADER.classList.add('disapearLoader');
+    BODY.classList.remove('noScroll');
+    setTimeout(() => {
+        LOADER.style.display="none";
+    }, 400);
+})
 
 NAVLINKS.forEach(e => {
     var index = NAVLINKS.indexOf(e);

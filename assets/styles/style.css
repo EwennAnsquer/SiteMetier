@@ -27,9 +27,78 @@
     background-clip: content-box;
 }
 
+.loaderScreen{
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    backdrop-filter: blur(20px);
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loaderScreen div{
+    width: 400px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.loaderScreen p{
+    font-size: 1.5rem;
+}
+
+.loaderScreen p:nth-child(2),.loaderScreen p:nth-child(3),.loaderScreen p:nth-child(4){
+    margin-left: 10px;
+    font-size: 2rem;
+    animation: disapear 1.5s linear infinite;
+    position: relative;
+    bottom: 2px;
+}
+
+.loaderScreen p:nth-child(2){
+    animation-delay: 0s;
+}
+
+.loaderScreen p:nth-child(3){
+    animation-delay: 0.3s;
+}
+
+.loaderScreen p:nth-child(4){
+    animation-delay: 0.6s;
+}
+
+@keyframes disapear{
+    0%{
+        opacity: 1;
+    }
+    25%{
+        opacity: 0;
+    }
+    50%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+.disapearLoader{
+    opacity: 0;
+    transition: opacity 0.4s ease-out;
+}
+
+.noScroll{
+    overflow: hidden;
+}
+
 body{
     margin: 0;
     padding: 0;
+    height: 100vh;
 }
 
 h1{
@@ -273,6 +342,14 @@ nav ul li p{
     }
     *::-webkit-scrollbar {
         width: 0px;
+    }
+    .loaderScreen p{
+        font-size: 0.5rem;
+    }
+    .loaderScreen p:nth-child(2),.loaderScreen p:nth-child(3),.loaderScreen p:nth-child(4){
+        font-size: 0.8rem;
+        position: relative;
+        bottom: 4px;
     }
     .heroArea{
         flex-direction: column;
