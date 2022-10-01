@@ -13,8 +13,6 @@ var scrollPercentage;
 var clientWidth;
 var distanceTopArticles;
 
-document.querySelector(".backToTop svg").setAttribute("viewBox","0 0 100 100");
-document.querySelector(".heroArea svg").setAttribute("viewBox","30 80 330 110");
 gsap.registerPlugin(ScrollTrigger);
 
 NAVLINKS.forEach(e => {
