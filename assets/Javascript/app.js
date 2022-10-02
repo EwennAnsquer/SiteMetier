@@ -7,6 +7,9 @@ const LOADER = document.querySelector('.loaderScreen')
 const BODY = document.querySelector('body')
 const BREAKPOINT = 900;
 const NAVHEIGHT = document.querySelector('nav').offsetHeight;
+const HAMBURGERBUTTON = document.querySelector('nav button')
+const NAVLIST = document.querySelector('nav ul')
+const HAMBURGERBARS = [...document.querySelectorAll('nav button div')]
 var positionCalculationArticle;
 var scroll;
 var totalheight;
@@ -20,6 +23,7 @@ gsap.registerPlugin(ScrollTrigger);
 window.addEventListener("load",()=>{
     LOADER.classList.add('disapearLoader');
     BODY.classList.remove('noScroll');
+    NAVLIST.style.transition='all 0.4s linear'; //set to 0s in css and after set to 0.4 to hide weird moving effect
     setTimeout(() => {
         LOADER.style.display="none";
     }, 400);
@@ -64,27 +68,32 @@ window.addEventListener('scroll',()=>{
 });
 
 function styleNavBar(scrollValue,clientWidth){
-    if(clientWidth>=BREAKPOINT){
-        if(scrollValue==0){
-            NAVBAR.style.backgroundColor="#4462C6";
-            NAVBAR.style.boxShadow="none";
-            if(clientWidth>=BREAKPOINT){
-                NAVLINKS.forEach(e =>{
-                    e.style.color="white";
-                })
-            }
-        }else{
-            NAVBAR.style.backgroundColor="#FFF";
-            NAVBAR.style.boxShadow="0 20px 50px 0 rgb(0 0 0 / 5%)";
-            if(scrollValue==1){
-                NAVLINKS.forEach(e =>{
-                    e.style.color="#4462C6";
-                })
-            }
+    if(scrollValue==0){
+        NAVBAR.style.backgroundColor="#4462C6";
+        NAVBAR.style.boxShadow="none";
+        if(clientWidth>=BREAKPOINT){
+            NAVLINKS.forEach(e =>{
+                e.style.color="white";
+            })
+        }
+        if(clientHeight<BREAKPOINT){
+            HAMBURGERBARS.forEach(e=>{
+                e.style.backgroundColor='white';
+            })
         }
     }else{
-        NAVBAR.style.backgroundColor="transparent";
-        NAVBAR.style.boxShadow="none";
+        NAVBAR.style.backgroundColor="#FFF";
+        NAVBAR.style.boxShadow="0 20px 50px 0 rgb(0 0 0 / 5%)";
+        if(scrollValue==1){
+            NAVLINKS.forEach(e =>{
+                e.style.color="#4462C6";
+            })
+        }
+        if(clientHeight<BREAKPOINT){
+            HAMBURGERBARS.forEach(e=>{
+                e.style.backgroundColor='#7e9cff';
+            })
+        }
     }
 }
 
@@ -114,3 +123,25 @@ NAVLINKS.forEach(link => link.addEventListener("click",(e)=>{
         behavior:"smooth"
     })
 }))
+
+HAMBURGERBUTTON.addEventListener('click',()=>{
+    if(NAVLIST.style.visibility=='hidden' || NAVLIST.style.visibility==''){
+        NAVLIST.style.height='20px';
+        NAVLIST.style.opacity='1';
+        NAVLIST.style.visibility='visible';
+        NAVLIST.style.height='368.9px';
+    }else{
+        NAVLIST.style.height='0px';
+        NAVLIST.style.opacity='0';
+        NAVLIST.style.visibility='hidden';
+    }
+    if(HAMBURGERBARS[0].className==''){
+        HAMBURGERBARS.forEach(e=>{
+            e.classList.add('open');
+        })
+    }else{
+        HAMBURGERBARS.forEach(e=>{
+            e.classList.remove('open');
+        })
+    }
+})

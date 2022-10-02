@@ -155,6 +155,49 @@ nav ul li p{
     cursor: pointer;
 }
 
+nav button{
+    display: flex;
+    flex-direction: column;
+    width: 40px;
+    height: 26px;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    padding: 0;
+    margin: 0;
+    background-color: transparent;
+    border: none;
+    top: 40px;
+    left: 20px;
+    transform: translateY(-50%);
+}
+
+nav button div{
+    background-color: white;
+    height: 2px;
+    width: 40px;
+    transition: all .3s ease-out 0s;
+    opacity: 1;
+}
+
+nav button div.open:nth-child(2){
+    opacity: 0;
+}
+
+nav button div.open:nth-child(1){
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+    width: 39px;
+}
+
+nav button div.open:nth-child(3){
+    position: relative;
+    top: -50%;
+    transform: translateY(50%) rotate(-45deg);
+    width: 39px;
+}
+
 .heroArea{
     background-color: #4462C6;
     height: 95vh;
@@ -333,6 +376,9 @@ nav ul li p{
     .backToTop img:hover{
         transform: scale(1.2);
     }
+    nav button{
+        display: none;
+    }
 }
 
 @media screen and (max-width:900px) {
@@ -375,20 +421,27 @@ nav ul li p{
         right: 10px;
         bottom: 5px;
     }
+    nav{
+        height: 80px;
+    }
     nav ul{
         visibility: hidden;
+        opacity: 0;
         flex-direction: column;
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
         border-radius: 6px;
-        height: auto;
+        height: 0px;
         align-items: flex-start;
         padding: 20px 0 20px 30px;
         background-color: white;
         width: 90%;
         left: 50%;
-        transform: translate(-50%,100px);
+        transform: translate(-50%,50px);
         position: relative;
         gap: 20px;
+        overflow: hidden;
+        transition: all 0s;
+        box-shadow: 0px 15px 20px 0px rgb(0 0 0 / 10%);
     }
     nav ul li .navBarLink{
         color: #4462C6;
