@@ -516,7 +516,7 @@ nav button div.open:nth-child(3){
     .skills ul li h2{
         font-size: 0.35rem;
         width: 100%;
-        text-align: center;
+        text-align: left;
     }
 
     .skills ul li:nth-child(1){
