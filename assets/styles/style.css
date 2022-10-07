@@ -313,8 +313,42 @@ nav button div.open:nth-child(3){
     grid-area: 2/2/3/3;
 }
 
-.skills{
+.quality{
     padding: 100px 15%;
+    background-color: white;
+}
+
+.quality .listQualities{
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.quality .listQualities div{
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+
+.quality p{
+    color: #4462C6;
+    margin: 0;
+}
+
+.quality h2{
+    font-weight: 600;
+    color: #4462C6;
+    margin:0;
+}
+
+.quality h2:before{
+    content: '-';
+}
+
+.skills{
+    padding: 100px 10%;
+    background-color: #4462C6;
 }
 
 .skills img{
@@ -340,10 +374,12 @@ nav button div.open:nth-child(3){
     align-items: center;
     justify-content: space-between;
     gap: 20px;
+    color: white;
 }
 
 .skills ul li h2{
     width: 50%;
+    color: white;
 }
 
 .skillsIcones{
@@ -397,6 +433,9 @@ nav button div.open:nth-child(3){
         position: relative;
         bottom: 4px;
     }
+    .whiteOnBlueH1,.blueOnWhiteH1{
+        font-size: 0.7rem; /*1px plus 2% de la view width * 5 comme les 5rems plus hauts */
+    }
     .heroArea{
         flex-direction: column;
         align-items: center;
@@ -410,7 +449,7 @@ nav button div.open:nth-child(3){
         height: 25%;
         text-align: center;
         justify-content: center;
-        font-size: 1rem; /*1px plus 2% de la view width * 5 comme les 5rems plus hauts */
+        font-size: 1rem;
     }
     .heroArea img{
         margin: 30px 0;
@@ -537,6 +576,13 @@ nav button div.open:nth-child(3){
 
     .skillsIcones{
         width: 100%;
+    }
+    .quality h2{
+        font-size: 0.35rem;
+    }
+
+    .quality p{
+        font-size: 0.3rem;
     }
 }
 
