@@ -97,7 +97,6 @@ function styleNavBar(scrollValue,clientWidth){
     }
 }
 
-
 function styleGoBackToTop(scrollValue){
     if(scrollValue<20){
         GOBACKTOTOP.style.visibility="hidden";
