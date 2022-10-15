@@ -168,7 +168,7 @@ nav button{
     background-color: transparent;
     border: none;
     top: 40px;
-    left: 20px;
+    left: 80vw;
     transform: translateY(-50%);
 }
 
@@ -453,7 +453,8 @@ nav button div.open:nth-child(3){
     width: max-content;
     margin: 0;
     left: 50%;
-    transform: translate(-50%,-120%);
+    transform: translate(-45%,-120%);
+    text-align: center;
 }
 
 .salaireIntermediare{
@@ -500,7 +501,7 @@ footer .content{
     width: 100%;
     padding: 20px 5% 20px 5%;
     height: 100%;
-    gap: 10%;
+    gap: 15%;
 }
 
 footer .footerList{
@@ -729,7 +730,6 @@ footer .droits p{
     }
 
     .friseSalaires p{
-        text-align: center;
         font-size: 0.25rem;
     }
 
