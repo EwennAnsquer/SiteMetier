@@ -97,6 +97,11 @@ function styleNavBar(scrollValue,clientWidth){
     }
 }
 
+GOBACKTOTOP.addEventListener("click",()=>{
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+});
+
 function styleGoBackToTop(scrollValue){
     if(scrollValue<20){
         GOBACKTOTOP.style.visibility="hidden";
